@@ -7,6 +7,20 @@
         <meta name="viewport" content="width=device-width">
     </head>
     <body>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'contact:form' %}">Contact Us</a></li>
+        {% if user.is_staff %}
+            <li><a href="{% url 'admin:index' %}">Admin Area</a></li>
+        {% endif %}
+        {% if user.is_authenticated %}
+            <li><a href="{% url 'account:profile' %}">{{ user.username }}'s profile</a></li>
+            <li><a href="{% url 'auth:logout' %}">Logout ({{ user.username }})</a></li>
+        {% else %}
+            <li><a href="{% url 'auth:login' %}">Login</a></li>
+            <li><a href="{% url 'account:create' %}">Register</a></li>
+        {% endif %}
+        </ul>
         {% block content %}
         {% endblock %}
     </body>
