@@ -7,9 +7,11 @@
 <ul>
     <li><a href="{% url 'contact:form' %}">Contact Us</a></li>
 {% if user.is_authenticated %}
+    <li><a href="{% url 'account:profile' %}">{{ user.username }}'s profile</a></li>
     <li><a href="{% url 'auth:logout' %}">Logout ({{ user.username }})</a></li>
 {% else %}
     <li><a href="{% url 'auth:login' %}">Login</a></li>
+    <li><a href="{% url 'account:create' %}">Register</a></li>
 {% endif %}
 </ul>
 <p>You've just created your first Django page. Pretty cool, eh?</p>
