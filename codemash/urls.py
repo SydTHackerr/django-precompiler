@@ -5,9 +5,8 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Examples:
+    (r'^contact/', include('contact.urls', namespace='contact')),
     url(r'^$', 'pages.views.home', name='home'),
-    # url(r'^codemash/', include('codemash.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
