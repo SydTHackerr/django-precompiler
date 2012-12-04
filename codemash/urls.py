@@ -6,6 +6,9 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     (r'^contact/', include('contact.urls', namespace='contact')),
+    (r'^accounts/', include('django.contrib.auth.urls', namespace='auth')),
+    (r'^accounts/', include('accounts.urls', namespace='account')),
+
     url(r'^$', 'pages.views.home', name='home'),
 
     # Uncomment the admin/doc line below to enable admin documentation:
