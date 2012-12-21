@@ -13,6 +13,7 @@
         {% if user.is_staff %}
             <li><a href="{% url 'admin:index' %}">Admin Area</a></li>
         {% endif %}
+            <li><a href="{% url 'contact:form' %}">Contact Us</a></li>
         {% if user.is_authenticated %}
             <li><a href="{% url 'account:profile' %}">{{ user.username }}'s profile</a></li>
             <li><a href="{% url 'auth:logout' %}">Logout ({{ user.username }})</a></li>
