@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load boolean_icon %}
 
 {% block content %}
 <h1>Your Account</h1>
@@ -6,4 +7,22 @@
 <ul>
     <li><a href="{% url 'auth:logout' %}">Logout</a></li>
 </ul>
+
+{% if sponsorships %}
+<h1>Your Sponsorships</h1>
+<table>
+    <tr>
+        <th>Level</th>
+        <th>Website</th>
+        <th>Approved</th>
+    </tr>
+    {% for sponsorship in sponsorships %}
+    <tr>
+        <td><a href="{% url 'sponsors:update' sponsorship.id %}">{{ sponsorship.level }}</a></td>
+        <td><a href="{{ sponsorship.website }}">{{ sponsorship.website }}</a></td>
+        <td>{{ sponsorship.approved|boolean_icon }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
 {% endblock %}

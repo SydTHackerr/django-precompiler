@@ -1,11 +1,16 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
+from sponsors.models import Sponsorship
 from accounts.forms import UserCreationForm
 
 
 def profile(request):
-    return render(request, "accounts/profile.html")
+    sponsorships = Sponsorship.objects.for_user(request.user)
+
+    return render(request, "accounts/profile.html", {
+        'sponsorships': sponsorships,
+    })
 
 
 def create_account(request):

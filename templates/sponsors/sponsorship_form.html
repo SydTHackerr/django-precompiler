@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}CodeMash Sponsors{% endblock %}
+
+{% block content %}
+<h1>Edit Sponsorship</h1>
+<p>
+    <label for="id_level">Level:</label>
+    <input type="text" id="id_level" value="{{ object.level }}" disabled />
+</p>
+<p>
+    <label for="id_approved">Approved:</label>
+    <input type="checkbox" id="id_approved" {% if object.approved %}checked{% endif %} disabled />
+</p>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save Changes" />
+</form>
+{% endblock %}

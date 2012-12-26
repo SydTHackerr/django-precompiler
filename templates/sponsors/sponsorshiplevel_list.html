@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}CodeMash Sponsors{% endblock %}
+
+{% block content %}
+<h1>Sponsors</h1>
+<ul>
+{% for level in object_list %}
+<li><h2>{{ level.level_name }}</h2>
+    <ul>
+        {% for sponsor in level.approved_sponsors %}
+        <li>
+            {% if sponsor.logo %}
+                <img src="{{ sponsor.logo.url }}" alt="{{ sponsor.sponsor }}" />
+            {% endif %}
+                <p>{{ sponsor.website_copy }}</p>
+            {% if sponsor.website %}
+                <p><a href="{{ sponsor.website }}">read more...</a></p>
+            {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</li>
+{% endfor %}
+</ul>
+{% endblock %}
