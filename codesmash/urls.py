@@ -6,6 +6,7 @@ from django.conf.urls import patterns, include, url
 
 urlpatterns = patterns('',
     url(r'^contact/', include('contact.urls', namespace='contact')),
+    url(r'^accounts/', include('django.contrib.auth.urls', namespace='auth')),
     url(r'^accounts/', include('accounts.urls', namespace='account')),
     url(r'^$', 'codesmash.views.home', name='home'),
 
