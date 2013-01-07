@@ -9,5 +9,6 @@ urlpatterns = patterns('',
     url(r'^accounts/', include('accounts.urls', namespace='account')),
     url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'codesmash.views.home', name='home'),
+    url(r'^$', 'django.contrib.flatpages.views.flatpage',
+        {'url': '/' }, name='home'),
 )
