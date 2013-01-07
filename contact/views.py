@@ -11,6 +11,12 @@ def contact_form(request):
         send_mail(form.cleaned_data['subject'], form.cleaned_data['message'],
                 form.cleaned_data['sender'], ['codesmash@example.com'])
 
+        return redirect("contact:thanks")
+
     return render(request, 'contact/form.html', {
         'form': form,
     })
+
+
+def contact_thanks(request):
+    return render(request, "contact/thanks.html")
