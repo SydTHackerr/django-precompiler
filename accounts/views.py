@@ -1,11 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 
+from talks.models import Talk
 from accounts.forms import UserCreationForm
 
 
 def profile(request):
-    return render(request, "accounts/profile.html")
+    return render(request, "accounts/profile.html", {
+        'proposals': Talk.objects.all(),
+    })
 
 
 def create_account(request):
