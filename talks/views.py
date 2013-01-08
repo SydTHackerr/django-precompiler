@@ -1,9 +1,9 @@
 from django.shortcuts import render
+from django.views.generic import ListView
 
 from talks.models import Talk
 
 
-def all_talks(request):
-    return render(request, "talks/index.html", {
-        "object_list": Talk.objects.all_approved(),
-    })
+class TalkListView(ListView):
+
+    queryset = Talk.objects.all_approved()
