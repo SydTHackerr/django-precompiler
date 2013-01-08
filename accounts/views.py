@@ -7,7 +7,7 @@ from accounts.forms import UserCreationForm
 
 def profile(request):
     return render(request, "accounts/profile.html", {
-        'proposals': Talk.objects.all(),
+        'proposals': Talk.objects.for_user(request.user),
     })
 
 
